@@ -45,9 +45,31 @@ fun Sayfa() {
     LaunchedEffect(key1 = true){
         val job: Job = CoroutineScope(Dispatchers.Main).launch {
             ads.kayitAd("Ahmet")
+            ads.kayitYas(23)
+            ads.kayitBoy(1.87)
+            ads.kayitBekarMi(true)
 
+            val liste = HashSet<String>()
+            liste.add("Mehmet")
+            liste.add("Zeynep")
+
+            ads.kayitArkadasListe(liste)
+
+            //okuma islemleri
             val gelenAd = ads.okuAd()
+            val gelenYas = ads.okuYas()
+            val gelenBoy = ads.okuBoy()
+            val gelenBekarMi = ads.okuBekarMi()
+            val gelenListe = ads.okuArkadasListe()
             Log.e("Gelen ad", gelenAd)
+            Log.e("gelenYas", gelenYas.toString())
+            Log.e("gelenBoy", gelenBoy.toString())
+            Log.e("gelenBekarMi", gelenBekarMi.toString())
+
+            for(a in gelenListe!!){
+                Log.e("Gelen Arkadaş", a)
+            }
+
         }
     }
 
